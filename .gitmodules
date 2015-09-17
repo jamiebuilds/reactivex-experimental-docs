@@ -1,9 +1,6 @@
 [submodule "_vendor/bootstrap"]
 	path = _vendor/bootstrap
-	url = git@github.com:twbs/bootstrap.git
-[submodule "_vendor/tomorrow-pygments"]
-	path = _vendor/tomorrow-pygments
-	url = git@github.com:MozMorris/tomorrow-pygments.git
+	url = https://github.com/twbs/bootstrap.git
 [submodule "_vendor/tomorrow-pygments-sass"]
 	path = _vendor/tomorrow-pygments-sass
-	url = git@github.com:thejameskyle/tomorrow-pygments-sass.git
+	url = https://github.com/thejameskyle/tomorrow-pygments-sass.git
