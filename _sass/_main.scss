@@ -1,0 +1,136 @@
+@import "../_vendor/bootstrap/scss/bootstrap";
+@import "../_vendor/tomorrow-pygments-sass/scss/tomorrow_night_eighties";
+
+$rx-dark-gray: #333;
+$rx-purple: #49008E;
+$rx-pink: #E00091;
+
+.highlight {
+  background: darken($rx-dark-gray, 5%);
+}
+
+body {
+  padding-top: 40px;
+}
+
+.rx-fullscreen,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.rx-docs {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-top: 0.2em solid $rx-pink;
+}
+
+.rx-docs__sidebar {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 220px;
+  padding-bottom: 3em;
+  overflow: auto;
+  background: $rx-dark-gray;
+  color: #eee;
+  -webkit-font-smoothing: antialiased;
+}
+
+.rx-docs__header {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 220px;
+  right: 0;
+  height: 50px;
+  padding: 0.3em 1em 0.3em;
+  background: #e7e7e7;
+}
+
+.rx-docs__content {
+  z-index: 0;
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  left: 220px;
+  right: 0;
+  overflow: auto;
+  background: white;
+}
+
+.rx-docs__nav p {
+  font-weight: bold;
+  padding: 0.4em 0.8em;
+  margin: 0;
+  color: $rx-pink;
+}
+
+.rx-docs__nav a {
+  display: block;
+  padding: 0.2em 0.4em;
+  padding-left: 1.6em;
+  color: #ddd;
+}
+
+.rx-logo {
+  padding: 0.4em 0.6em;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.rx-docs__title {
+  background: $rx-purple;
+  color: $rx-pink;
+  padding: 3em 0 0.5em;
+}
+
+.rx-docs__section_title {
+  padding: 3em 0 1em;
+  margin-bottom: 1em;
+  background: $rx-pink;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+}
+
+.rx-docs__guide {
+  margin-bottom: 1em;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.rx-docs__guide_text {
+  width: 50%;
+  vertical-align: top;
+  background: white;
+  padding: 1em 0;
+  background: #f9f9f9;
+}
+
+.rx-docs__guide_text code {
+  background: white;
+}
+
+.rx-docs__guide_code {
+  width: 50%;
+  vertical-align: top;
+  @extend .highlight;
+  padding-top: 2em;
+}
+
+.rx-docs__guide_code pre {
+  padding: 1em 0.5em;
+}
+
+
+
+
+
+
+
