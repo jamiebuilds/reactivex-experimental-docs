@@ -1,0 +1,437 @@
+languages:
+  - id: java
+    title: Java
+  - id: javascript
+    title: JavaScript
+    selected: true
+  - id: c-sharp
+    title: "C#"
+  - id: c-sharp-unity
+    title: "C#(Unity)"
+  - id: scala
+    title: Scala
+  - id: clojure
+    title: Clojure
+  - id: c-plus-plus
+    title: C++
+  - id: ruby
+    title: Ruby
+  - id: python
+    title: Python
+  - id: groovy
+    title: Groovy
+  - id: jruby
+    title: JRuby
+  - id: kotlin
+    title: Kotlin
+  - id: swift
+    title: Swift
+data:
+  - id: creating-observables
+    title: Creating Observables
+    items:
+      - id: create
+        title: Create
+        languages:
+          groovy:
+            - id: create
+              title: create
+          java:
+            - id: create
+              title: create
+          javascript:
+            - id: create
+              title: create
+              alt_names:
+                - createWithDisposable
+            - id: generate
+              title: generate
+            - id: generate-with-absolute-time
+              title: generateWithAbsoluteTime
+            - id: generate-with-relative-time
+              title: generateWithRelativeTime
+      - id: defer
+        title: Defer
+        languages:
+          groovy:
+            - id: defer
+              title: defer
+            - id: if-then
+              title: ifThen
+            - id: switch-case
+              title: switchCase
+          java:
+            - id: defer
+              title: defer
+            - id: if-then
+              title: ifThen
+            - id: switch-case
+              title: switchCase
+          javascript:
+            - id: case
+              title: case
+            - id: defer
+              title: defer
+            - id: if-then
+              title: ifThen
+            - id: switch-case
+              title: switchCase
+      - id: empty-never-throw
+        title: Empty/Never/Throw
+        languages:
+          groovy:
+            - id: empty
+              title: empty
+            - id: never
+              title: never
+            - id: error
+              title: error
+          java:
+            - id: empty
+              title: empty
+            - id: never
+              title: never
+            - id: error
+              title: error
+          javascript:
+            - id: empty
+              title: empty
+            - id: never
+              title: never
+            - id: throw
+              title: throw
+      - id: from
+        title: From
+        languages:
+          groovy:
+            - id: decode
+              title: decode
+            - id: from
+              title: from
+            - id: from-action
+              title: fromAction
+            - id: from-callable
+              title: fromCallable
+            - id: from-func-0
+              title: fromFunc0
+            - id: from-runnable
+              title: fromRunnable
+            - id: run-async
+              title: runAsync
+          java:
+            - id: decode
+              title: decode
+            - id: from
+              title: from
+            - id: from-action
+              title: fromAction
+            - id: from-callable
+              title: fromCallable
+            - id: from-func-0
+              title: fromFunc0
+            - id: from-runnable
+              title: fromRunnable
+            - id: run-async
+              title: runAsync
+          javascript:
+            - id: from
+              title: from
+            - id: from-callback
+              title: fromCallback
+            - id: from-event
+              title: fromEvent
+            - id: from-event-pattern
+              title: fromEventPattern
+            - id: from-node-callback
+              title: fromNodeCallback
+            - id: from-promise
+              title: fromPromise
+            - id: of
+              title: of
+            - id: of-array-changes
+              title: ofArrayChanges
+            - id: of-object-changes
+              title: ofObjectChanges
+            - id: of-with-scheduler
+              title: ofWithScheduler
+            - id: pairs
+              title: pairs
+      - id: interval
+        title: Interval
+        languages:
+          groovy:
+            - id: interval
+              title: interval
+          java:
+            - id: interval
+              title: interval
+          javascript:
+            - id: interval
+              title: interval
+      - id: just
+        title: Just
+        languages:
+          groovy:
+            - id: just
+              title: just
+          java:
+            - id: just
+              title: just
+          javascript:
+            - id: just
+              title: just
+            - id: return
+              title: return
+      - id: range
+        title: Range
+        languages:
+          groovy:
+            - id: range
+              title: range
+          java:
+            - id: range
+              title: range
+          javascript:
+            - id: range
+              title: range
+      - id: repeat
+        title: Repeat
+        languages:
+          groovy:
+            - id: do-while
+              title: doWhile
+            - id: repeat
+              title: repeat
+            - id: repeat-when
+              title: repeatWhen
+            - id: while-do
+              title: whileDo
+          java:
+            - id: do-while
+              title: doWhile
+            - id: repeat
+              title: repeat
+            - id: repeat-when
+              title: repeatWhen
+            - id: while-do
+              title: whileDo
+          javascript:
+            - id: do-while
+              title: doWhile
+            - id: repeat
+              title: repeat
+            - id: while
+              title: while
+      - id: start
+        title: Start
+        languages:
+          groovy:
+            - id: async-action
+              title: asyncAction
+            - id: async-func
+              title: asyncFunc
+            - id: defer-future
+              title: deferFuture
+            - id: for-each-future
+              title: forEachFuture
+            - id: from-action
+              title: fromAction
+            - id: from-callable
+              title: fromCallable
+            - id: from-func-0
+              title: fromFunc0
+            - id: from-runnable
+              title: fromRunnable
+            - id: start
+              title: start
+            - id: start-future
+              title: startFuture
+            - id: to-async
+              title: toAsync
+          java:
+            - id: async-action
+              title: asyncAction
+            - id: async-func
+              title: asyncFunc
+            - id: defer-future
+              title: deferFuture
+            - id: for-each-future
+              title: forEachFuture
+            - id: from-action
+              title: fromAction
+            - id: from-callable
+              title: fromCallable
+            - id: from-func-0
+              title: fromFunc0
+            - id: from-runnable
+              title: fromRunnable
+            - id: start
+              title: start
+            - id: start-future
+              title: startFuture
+            - id: to-async
+              title: toAsync
+          javascript:
+            - id: start
+              title: start
+            - id: start-async
+              title: startAsync
+            - id: to-async
+              title: toAsync
+      - id: timer
+        title: Timer
+        languages:
+          groovy:
+            - id: timer
+              title: timer
+          java:
+            - id: timer
+              title: timer
+          javascript:
+            - id: timer
+              title: timer
+  - id: transforming-observables
+    title: Transforming Observables
+    items:
+      - id: buffer
+        title: Buffer
+      - id: flat-map
+        title: FlatMap
+      - id: group-by
+        title: GroupBy
+      - id: map
+        title: Map
+      - id: scan
+        title: Scan
+      - id: window
+        title: Window
+  - id: filtering-observables
+    title: Filtering Observables
+    items:
+      - id: debounce
+        title: Debounce
+      - id: distinct
+        title: Distinct
+      - id: element-at
+        title: ElementAt
+      - id: filter
+        title: Filter
+      - id: first
+        title: First
+      - id: ignore-elements
+        title: IgnoreElements
+      - id: last
+        title: Last
+      - id: sample
+        title: Sample
+      - id: skip
+        title: Skip
+      - id: skip-last
+        title: SkipLast
+      - id: take
+        title: Take
+      - id: take-last
+        title: TakeLast
+  - id: combining-observables
+    title: Combining Observables
+    items:
+      - id: and-then-when
+        title: And/Then/When
+      - id: combine-latest
+        title: CombineLatest
+      - id: join
+        title: Join
+      - id: merge
+        title: Merge
+      - id: start-with
+        title: StartWith
+      - id: switch
+        title: Switch
+      - id: zip
+        title: Zip
+  - id: error-handling-operators
+    title: Error Handling Operators
+    items:
+      - id: catch
+        title: Catch
+      - id: retry
+        title: Retry
+  - id: observable-utility-operators
+    title: Observable Utility Operators
+    items:
+      - id: delay
+        title: Delay
+      - id: do
+        title: Do
+      - id: materialize-dematerialize
+        title: Materialize/Dematerialize
+      - id: observe-on
+        title: ObserveOn
+      - id: serialize
+        title: Serialize
+      - id: subscribe
+        title: Subscribe
+      - id: subscribe-on
+        title: SubscribeOn
+      - id: time-interval
+        title: TimeInterval
+      - id: timeout
+        title: Timeout
+      - id: timestamp
+        title: Timestamp
+      - id: using
+        title: Using
+  - id: conditional-and-boolean-operators
+    title: Conditional and Boolean Operators
+    items:
+      - id: all
+        title: All
+      - id: amb
+        title: Amb
+      - id: contains
+        title: Contains
+      - id: default-if-empty
+        title: DefaultIfEmpty
+      - id: sequence-equal
+        title: SequenceEqual
+      - id: skip-until
+        title: SkipUntil
+      - id: skip-while
+        title: SkipWhile
+      - id: take-until
+        title: TakeUntil
+      - id: take-while
+        title: TakeWhile
+  - id: mathematical-and-aggregate-operators
+    title: Mathematical and Aggregate Operators
+    items:
+      - id: average
+        title: Average
+      - id: concat
+        title: Concat
+      - id: count
+        title: Count
+      - id: max
+        title: Max
+      - id: min
+        title: Min
+      - id: reduce
+        title: Reduce
+      - id: sum
+        title: Sum
+  - id: connectable-observable-operators
+    title: Connectable Observable Operators
+    items:
+      - id: connect
+        title: Connect
+      - id: publish
+        title: Publish
+      - id: ref-count
+        title: RefCount
+      - id: replay
+        title: Replay
+  - id: operators-to-convert-observables
+    title: Operators to Convert Observables
+    items:
+      - id: to
+        title: To

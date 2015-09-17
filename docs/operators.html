@@ -1,0 +1,166 @@
+---
+layout: default
+fullscreen: true
+---
+
+<div class="rx-docs">
+  <div class="rx-docs__sidebar">
+    <div class="rx-logo">ReactiveX</div>
+    <nav class="rx-docs__nav">
+      <ul>
+        {% for group in site.data.operators.data %}
+          <li>
+            <a href="#ref-{{group.id}}">{{group.title}}</a>
+            <ul>
+              {% for item in group.items %}
+                <li>
+                  <a href="#ref-{{group.id}}-{{item.id}}">{{item.title}}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+
+  <div class="rx-docs__header">
+    <div class="form-inline">
+      <div class="form-group">
+        <label for="select-language">Language:</label>
+        <select class="form-control c-select" id="select-language">
+          {% for language in site.data.operators.languages %}
+            <option value="{{language.id}}" {% if language.selected %}selected{% endif %}>{{language.title}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group pull-right">
+        <label for="search">Search:</label>
+        <input type="text" class="form-control" id="search">
+      </div>
+    </div>
+  </div>
+
+  <div class="rx-docs__content">
+    <div class="rx-docs__title">
+      <div class="container">
+        <h1 class="display-1">Operators</h1>
+      </div>
+    </div>
+
+    {% for group in site.data.operators.data %}
+      {% capture group_path %}operators/{{group.id}}{% endcapture %}
+      {% capture group_lead_path %}{{group_path}}/lead.md{% endcapture %}
+      {% capture group_lead_content %}{% include {{group_lead_path}} %}{% endcapture %}
+
+      <div class="rx-docs__group_title" id="ref-{{group.id}}">
+        <div class="container">
+          <h2>{{group.title}}</h2>
+          <div class="lead">
+            {{group_lead_content | markdownify}}
+          </div>
+        </div>
+      </div>
+
+      {% for item in group.items %}
+        {% capture item_path %}{{group_path}}/{{item.id}}{% endcapture %}
+        {% capture item_lead_path %}{{item_path}}/lead.md{% endcapture %}
+        {% capture item_intro_path %}{{item_path}}/intro.md{% endcapture %}
+        {% capture item_see_path %}{{item_path}}/see.md{% endcapture %}
+        {% capture item_lead_content %}{% include {{item_lead_path}} %}{% endcapture %}
+        {% capture item_intro_content %}{% include {{item_intro_path}} %}{% endcapture %}
+        {% capture item_see_content %}{% include {{item_see_path}} %}{% endcapture %}
+
+        <div class="rx-docs__group_item" id="ref-{{group.id}}-{{item.id}}">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                <h3>{{item.title}}</h3>
+                {{item_lead_content | markdownify}}
+                {{item_intro_content | markdownify}}
+              </div>
+              {% if item_see_content != "" %}
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="card-header">
+                      Also see:
+                    </div>
+                    <div class="card-block">
+                      <!-- <p><strong>See also:</strong></p> -->
+                      {{item_see_content | markdownify}}
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        {% for language in item.languages %}
+          {% capture language_path %}{{item_path}}/{{language[0]}}{% endcapture %}
+
+          <table class="rx-docs__methods" data-language="{{language[0]}}">
+            <tbody>
+              {% for method in language[1] %}
+                <tr>
+                  <td class="rx-docs__methods_text">
+                    <div class="container">
+                      {% capture method_path %}{{language_path}}/{{method.id}}.md{% endcapture %}
+                      {% capture method_content %}{% include {{method_path}} %}{% endcapture %}
+
+                      <h4><code>{{method.title}}</code></h4>
+
+                      {% if method.alt_names %}
+                        <p>
+                          <em>
+                            Alternative names:
+                            {% for alt_name in method.alt_names %}
+                              <code>{{alt_name}}</code>
+                            {% endfor %}
+                          </em>
+                        </p>
+                      {% endif %}
+
+                      {{method_content | markdownify}}
+                    </div>
+                  </td>
+                  <td class="rx-docs__methods_code">
+
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endfor %}
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  var selectLanguage = document.getElementById('select-language');
+  var methods = document.getElementsByClassName('rx-docs__methods');
+  var languages = {};
+
+  for (var i = 0; i < methods.length; i++) {
+    var language = methods[i].dataset.language;
+    languages[language] = languages[language] || [];
+    languages[language].push(methods[i]);
+  }
+
+  function update() {
+    var language = selectLanguage.value;
+
+    for (var a = 0; a < methods.length; a++) {
+      methods[a].hidden = true;
+    }
+
+    for (var b = 0; b < languages[language].length; b++) {
+      languages[language][b].hidden = false;
+    }
+  }
+
+  update();
+  selectLanguage.addEventListener('change', update);
+</script>

@@ -64,18 +64,30 @@ body {
   background: white;
 }
 
-.rx-docs__nav p {
-  font-weight: bold;
-  padding: 0.4em 0.8em;
-  margin: 0;
-  color: $rx-pink;
-}
+.rx-docs__nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-.rx-docs__nav a {
-  display: block;
-  padding: 0.2em 0.4em;
-  padding-left: 1.6em;
-  color: #ddd;
+  a {
+    display: block;
+  }
+
+  > ul > li > a {
+    font-weight: bold;
+    padding: 0.4em 0.8em;
+    margin: 0;
+    color: $rx-pink;
+  }
+
+  > ul > li > ul > li > a {
+    display: block;
+    padding: 0.2em 0.4em;
+    padding-left: 1.6em;
+    color: #ddd;
+  }
 }
 
 .rx-logo {
@@ -91,42 +103,88 @@ body {
   padding: 3em 0 0.5em;
 }
 
-.rx-docs__section_title {
+.rx-docs__group_title {
   padding: 3em 0 1em;
-  margin-bottom: 1em;
   background: $rx-pink;
   color: white;
   -webkit-font-smoothing: antialiased;
 }
 
-.rx-docs__guide {
-  margin-bottom: 1em;
+.rx-docs__group_item {
+  padding: 1.2em 0 0.4em;
+  border-left: 5px solid transparent;
+}
+
+.rx-docs__group_item:target {
+  border-left-color: $rx-purple;
+}
+
+.rx-docs__methods {
   width: 100%;
   table-layout: fixed;
 }
 
-.rx-docs__guide_text {
+.rx-docs__methods_text {
   width: 50%;
   vertical-align: top;
   background: white;
   padding: 1em 0;
   background: #f9f9f9;
+
+  code {
+    background: white;
+  }
 }
 
-.rx-docs__guide_text code {
-  background: white;
-}
-
-.rx-docs__guide_code {
+.rx-docs__methods_code {
   width: 50%;
   vertical-align: top;
-  @extend .highlight;
+  background: darken($rx-dark-gray, 5%);
   padding-top: 2em;
+
+  pre {
+    padding: 1em 0.5em;
+  }
 }
 
-.rx-docs__guide_code pre {
-  padding: 1em 0.5em;
-}
+
+
+// .rx-docs__section_title {
+//   padding: 3em 0 1em;
+//   margin-bottom: 1em;
+//   background: $rx-pink;
+//   color: white;
+//   -webkit-font-smoothing: antialiased;
+// }
+
+// .rx-docs__guide {
+//   margin-bottom: 1em;
+//   width: 100%;
+//   table-layout: fixed;
+// }
+
+// .rx-docs__guide_text {
+//   width: 50%;
+//   vertical-align: top;
+//   background: white;
+//   padding: 1em 0;
+//   background: #f9f9f9;
+// }
+
+// .rx-docs__guide_text code {
+//   background: white;
+// }
+
+// .rx-docs__guide_code {
+//   width: 50%;
+//   vertical-align: top;
+//   @extend .highlight;
+//   padding-top: 2em;
+// }
+
+// .rx-docs__guide_code pre {
+//   padding: 1em 0.5em;
+// }
 
 
 
