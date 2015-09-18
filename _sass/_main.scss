@@ -99,7 +99,7 @@ body {
 
 .rx-docs__title {
   background: $rx-purple;
-  color: $rx-pink;
+  color: white;
   padding: 3em 0 0.5em;
 }
 
@@ -140,10 +140,40 @@ body {
   width: 50%;
   vertical-align: top;
   background: darken($rx-dark-gray, 5%);
-  padding-top: 2em;
+  -webkit-font-smoothing: antialiased;
 
   pre {
-    padding: 1em 0.5em;
+    padding: 1em 1em;
+  }
+
+  .nav-tabs {
+    background: darken($rx-dark-gray, 2.5%);
+    border-bottom-color: darken($rx-dark-gray, 7.5%);
+  }
+
+  .nav-item {
+    margin: 0 !important;
+  }
+
+  .nav-link {
+    color: white;
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid transparent;
+
+    &:hover,
+    &:focus {
+      background: darken($rx-dark-gray, 5%);
+      border-bottom-color: transparent;
+    }
+
+    &:active,
+    &.active,
+    &.active:hover {
+      background: darken($rx-dark-gray, 7.5%);
+      color: white;
+      border-bottom-color: $rx-pink;
+    }
   }
 }
 

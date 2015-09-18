@@ -6,26 +6,36 @@ languages:
     selected: true
   - id: c-sharp
     title: "C#"
+    disabled: true
   - id: c-sharp-unity
     title: "C#(Unity)"
+    disabled: true
   - id: scala
     title: Scala
+    disabled: true
   - id: clojure
     title: Clojure
+    disabled: true
   - id: c-plus-plus
     title: C++
+    disabled: true
   - id: ruby
     title: Ruby
+    disabled: true
   - id: python
     title: Python
+    disabled: true
   - id: groovy
     title: Groovy
   - id: jruby
     title: JRuby
+    disabled: true
   - id: kotlin
     title: Kotlin
+    disabled: true
   - id: swift
     title: Swift
+    disabled: true
 data:
   - id: creating-observables
     title: Creating Observables
@@ -44,6 +54,11 @@ data:
               title: create
               alt_names:
                 - createWithDisposable
+              examples:
+                - title: Function
+                  file: function.js
+                - title: Disposable
+                  file: disposable.js
             - id: generate
               title: generate
             - id: generate-with-absolute-time
@@ -70,14 +85,15 @@ data:
           javascript:
             - id: case
               title: case
+              alt_names:
+                - switchCase
             - id: defer
               title: defer
-            - id: if-then
-              title: ifThen
-            - id: switch-case
-              title: switchCase
+            - id: if
+              title: if
       - id: empty-never-throw
         title: Empty/Never/Throw
+        grouped: true
         languages:
           groovy:
             - id: empty

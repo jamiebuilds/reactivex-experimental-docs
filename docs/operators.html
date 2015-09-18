@@ -30,7 +30,11 @@ fullscreen: true
         <label for="select-language">Language:</label>
         <select class="form-control c-select" id="select-language">
           {% for language in site.data.operators.languages %}
-            <option value="{{language.id}}" {% if language.selected %}selected{% endif %}>{{language.title}}</option>
+            <option value="{{language.id}}"
+              {% if language.selected %}selected{% endif %}
+              {% if language.disabled %}disabled{% endif %}>
+              {{language.title}}
+            </option>
           {% endfor %}
         </select>
       </div>
@@ -102,34 +106,74 @@ fullscreen: true
 
           <table class="rx-docs__methods" data-language="{{language[0]}}">
             <tbody>
-              {% for method in language[1] %}
+              {% if item.grouped %}
+                {% capture all_path %}{{language_path}}/all.md{% endcapture %}
+                {% capture all_content %}{% include {{all_path}} %}{% endcapture %}
                 <tr>
                   <td class="rx-docs__methods_text">
                     <div class="container">
-                      {% capture method_path %}{{language_path}}/{{method.id}}.md{% endcapture %}
-                      {% capture method_content %}{% include {{method_path}} %}{% endcapture %}
+                      <h4>
+                        {% for method in language[1] %}
+                          <code>{{method.title}}</code>
+                        {% endfor %}
+                      </h4>
 
-                      <h4><code>{{method.title}}</code></h4>
-
-                      {% if method.alt_names %}
-                        <p>
-                          <em>
-                            Alternative names:
-                            {% for alt_name in method.alt_names %}
-                              <code>{{alt_name}}</code>
-                            {% endfor %}
-                          </em>
-                        </p>
-                      {% endif %}
-
-                      {{method_content | markdownify}}
+                      {{all_content | markdownify}}
                     </div>
                   </td>
                   <td class="rx-docs__methods_code">
 
                   </td>
                 </tr>
-              {% endfor %}
+              {% else %}
+                {% for method in language[1] %}
+                  {% capture method_path %}{{language_path}}/{{method.id}}.md{% endcapture %}
+                  {% capture method_content %}{% include {{method_path}} %}{% endcapture %}
+                  <tr>
+                    <td class="rx-docs__methods_text">
+                      <div class="container">
+                        <h4><code>{{method.title}}</code></h4>
+
+                        {% if method.alt_names %}
+                          <p>
+                            <em>
+                              Alternative names:
+                              {% for alt_name in method.alt_names %}
+                                <code>{{alt_name}}</code>
+                              {% endfor %}
+                            </em>
+                          </p>
+                        {% endif %}
+
+                        {{method_content | markdownify}}
+                      </div>
+                    </td>
+                    <td class="rx-docs__methods_code">
+                      <ul class="nav nav-tabs" role="tablist">
+                        {% for example in method.examples %}
+                          <li class="nav-item">
+                            <a href="#{{method.id}}-ex-{{example.file | replace: '.','-'}}" class="nav-link{% if forloop.first %} active{% endif %}" role="tab" data-toggle="tab">
+                              {{example.title}}
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                      <div class="tab-content">
+                        {% for example in method.examples %}
+                          {% capture example_path %}{{language_path}}/{{method.id}}-ex-{{example.file}}{% endcapture %}
+                          {% capture example_content %}{% include {{example_path}} %}{% endcapture %}
+
+                          <div role="tabpanel" class="tab-pane{% if forloop.first %} active{% endif %}" id="{{method.id}}-ex-{{example.file | replace: '.','-'}}">
+                            {% highlight javascript %}
+                              {{example_content}}
+                            {% endhighlight %}
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+              {% endif %}
             </tbody>
           </table>
         {% endfor %}
@@ -137,6 +181,9 @@ fullscreen: true
     {% endfor %}
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.js"></script>
 
 <script>
   var selectLanguage = document.getElementById('select-language');
