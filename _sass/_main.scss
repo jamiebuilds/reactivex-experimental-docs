@@ -177,48 +177,11 @@ body {
   }
 }
 
-
-
-// .rx-docs__section_title {
-//   padding: 3em 0 1em;
-//   margin-bottom: 1em;
-//   background: $rx-pink;
-//   color: white;
-//   -webkit-font-smoothing: antialiased;
-// }
-
-// .rx-docs__guide {
-//   margin-bottom: 1em;
-//   width: 100%;
-//   table-layout: fixed;
-// }
-
-// .rx-docs__guide_text {
-//   width: 50%;
-//   vertical-align: top;
-//   background: white;
-//   padding: 1em 0;
-//   background: #f9f9f9;
-// }
-
-// .rx-docs__guide_text code {
-//   background: white;
-// }
-
-// .rx-docs__guide_code {
-//   width: 50%;
-//   vertical-align: top;
-//   @extend .highlight;
-//   padding-top: 2em;
-// }
-
-// .rx-docs__guide_code pre {
-//   padding: 1em 0.5em;
-// }
-
-
-
-
-
-
-
+@include media-breakpoint-down(md) {
+  .rx-docs__methods,
+  .rx-docs__methods_text,
+  .rx-docs__methods_code {
+    display: block;
+    width: 100%;
+  }
+}
