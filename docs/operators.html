@@ -104,14 +104,14 @@ fullscreen: true
         {% for language in item.languages %}
           {% capture language_path %}{{item_path}}/{{language[0]}}{% endcapture %}
 
-          <table class="rx-docs__methods" data-language="{{language[0]}}">
-            <tbody>
-              {% if item.grouped %}
-                {% capture all_path %}{{language_path}}/all.md{% endcapture %}
-                {% capture all_content %}{% include {{all_path}} %}{% endcapture %}
-                <tr>
-                  <td class="rx-docs__methods_text">
-                    <div class="container">
+          <div class="rx-docs__methods" data-language="{{language[0]}}">
+            {% if item.grouped %}
+              {% capture all_path %}{{language_path}}/all.md{% endcapture %}
+              {% capture all_content %}{% include {{all_path}} %}{% endcapture %}
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="rx-docs__methods_text">
                       <h4>
                         {% for method in language[1] %}
                           <code>{{method.title}}</code>
@@ -120,18 +120,22 @@ fullscreen: true
 
                       {{all_content | markdownify}}
                     </div>
-                  </td>
-                  <td class="rx-docs__methods_code">
+                  </div>
+                  <div class="col-lg-6 p-x-0">
+                    <div class="rx-docs__methods_code">
 
-                  </td>
-                </tr>
-              {% else %}
-                {% for method in language[1] %}
-                  {% capture method_path %}{{language_path}}/{{method.id}}.md{% endcapture %}
-                  {% capture method_content %}{% include {{method_path}} %}{% endcapture %}
-                  <tr>
-                    <td class="rx-docs__methods_text">
-                      <div class="container">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              {% for method in language[1] %}
+                {% capture method_path %}{{language_path}}/{{method.id}}.md{% endcapture %}
+                {% capture method_content %}{% include {{method_path}} %}{% endcapture %}
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="rx-docs__methods_text">
                         <h4><code>{{method.title}}</code></h4>
 
                         {% if method.alt_names %}
@@ -147,35 +151,37 @@ fullscreen: true
 
                         {{method_content | markdownify}}
                       </div>
-                    </td>
-                    <td class="rx-docs__methods_code">
-                      <ul class="nav nav-tabs" role="tablist">
-                        {% for example in method.examples %}
-                          <li class="nav-item">
-                            <a href="#{{method.id}}-ex-{{example.file | replace: '.','-'}}" class="nav-link{% if forloop.first %} active{% endif %}" role="tab" data-toggle="tab">
-                              {{example.title}}
-                            </a>
-                          </li>
-                        {% endfor %}
-                      </ul>
-                      <div class="tab-content">
-                        {% for example in method.examples %}
-                          {% capture example_path %}{{language_path}}/{{method.id}}-ex-{{example.file}}{% endcapture %}
-                          {% capture example_content %}{% include {{example_path}} %}{% endcapture %}
+                    </div>
+                    <div class="col-lg-6 p-x-0">
+                      <div class="rx-docs__methods_code">
+                        <ul class="nav nav-tabs" role="tablist">
+                          {% for example in method.examples %}
+                            <li class="nav-item">
+                              <a href="#{{method.id}}-ex-{{example.file | replace: '.','-'}}" class="nav-link{% if forloop.first %} active{% endif %}" role="tab" data-toggle="tab">
+                                {{example.title}}
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                        <div class="tab-content">
+                          {% for example in method.examples %}
+                            {% capture example_path %}{{language_path}}/{{method.id}}-ex-{{example.file}}{% endcapture %}
+                            {% capture example_content %}{% include {{example_path}} %}{% endcapture %}
 
-                          <div role="tabpanel" class="tab-pane{% if forloop.first %} active{% endif %}" id="{{method.id}}-ex-{{example.file | replace: '.','-'}}">
-                            {% highlight javascript %}
-                              {{example_content}}
-                            {% endhighlight %}
-                          </div>
-                        {% endfor %}
+                            <div role="tabpanel" class="tab-pane{% if forloop.first %} active{% endif %}" id="{{method.id}}-ex-{{example.file | replace: '.','-'}}">
+                              {% highlight javascript %}
+                                {{example_content}}
+                              {% endhighlight %}
+                            </div>
+                          {% endfor %}
+                        </div>
                       </div>
-                    </td>
-                  </tr>
-                {% endfor %}
-              {% endif %}
-            </tbody>
-          </table>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
         {% endfor %}
       {% endfor %}
     {% endfor %}

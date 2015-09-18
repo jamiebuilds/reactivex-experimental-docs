@@ -120,14 +120,12 @@ body {
 }
 
 .rx-docs__methods {
+  position: relative;
   width: 100%;
-  table-layout: fixed;
+  background: #f9f9f9;
 }
 
 .rx-docs__methods_text {
-  width: 50%;
-  vertical-align: top;
-  background: white;
   padding: 1em 0;
   background: #f9f9f9;
 
@@ -137,8 +135,6 @@ body {
 }
 
 .rx-docs__methods_code {
-  width: 50%;
-  vertical-align: top;
   background: darken($rx-dark-gray, 5%);
   -webkit-font-smoothing: antialiased;
 
@@ -169,7 +165,8 @@ body {
 
     &:active,
     &.active,
-    &.active:hover {
+    &.active:hover,
+    &.active:focus {
       background: darken($rx-dark-gray, 7.5%);
       color: white;
       border-bottom-color: $rx-pink;
@@ -177,11 +174,32 @@ body {
   }
 }
 
-@include media-breakpoint-down(md) {
-  .rx-docs__methods,
+@include media-breakpoint-up(lg) {
+  .rx-docs__methods {
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+    }
+
+    &::before {
+      left: 0;
+      background: #f9f9f9;
+    }
+
+    &::after {
+      right: 0;
+      background: darken($rx-dark-gray, 5%);
+    }
+  }
+
   .rx-docs__methods_text,
   .rx-docs__methods_code {
-    display: block;
-    width: 100%;
+    position: relative;
+    z-index: 1;
   }
 }
